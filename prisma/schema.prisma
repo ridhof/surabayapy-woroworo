@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model articles {
+  id         Int      @id @default(autoincrement())
+  slug       String   @unique(map: "slug") @db.VarChar(100)
+  title      String   @db.VarChar(100)
+  content    String   @db.Text
+  created_on DateTime @default(now()) @db.Timestamp(0)
+  deleted    Boolean  @default(false)
+}
