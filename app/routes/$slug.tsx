@@ -15,7 +15,7 @@ export default function PostSlug() {
     return (
         <div>
             <h1>{post.title}</h1>
-            <div>{post.content}</div>
+            <div dangerouslySetInnerHTML={{__html: post.content}} />
         </div>
     );
 }
